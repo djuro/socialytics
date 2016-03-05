@@ -2,6 +2,8 @@ security:
     providers:
         in_memory:
             memory: ~
+        hwi:                               
+            id: hwi_oauth.user.provider  
             
     firewalls:
         secured_area:
