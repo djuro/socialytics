@@ -70,12 +70,12 @@ hwi_oauth:
     # list of names of the firewalls in which this bundle is active, this setting MUST be set
     firewall_names: [secured_area]
     resource_owners:
-        any_name:
+        twitter:
             type:                twitter
-            client_id:           <consumer-key>
-            client_secret:       <consumer-secret>
-            options:
-                include_email: true
+            client_id:           WjdCnrFSf9Odp23p6AJNLgeuI
+            client_secret:       jLti0fnxELG9Ik6lHYHuUVDSsn7UvoQoOedQtObEJDEHMoatBg
+            #options:
+             #   include_email: true
                 
 services:
     hwi_oauth.user.provider.entity:
