@@ -1,8 +1,3 @@
-socialytics:
-    resource: "@SocialyticsBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
@@ -14,3 +9,11 @@ hwi_oauth_redirect:
 hwi_oauth_login:
     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
     prefix:   /login
+    
+twitter_login:
+    path: /login/check-twitter
+    
+socialytics:
+    resource: "@SocialyticsBundle/Controller/"
+    type:     annotation
+    prefix:   /
