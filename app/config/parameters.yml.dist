@@ -17,3 +17,6 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    twitter_access_token: 55793305-T5DxxlRcLHkqLR7AJieBCuE5u1ynnQmXHjb9Tlyhj
+    twitter_secret: sunqh8Wm62gLgW8uvkk65Gx616AOPupDrSv8Gyccj8eHH
