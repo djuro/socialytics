@@ -19,4 +19,6 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     twitter_access_token: 55793305-T5DxxlRcLHkqLR7AJieBCuE5u1ynnQmXHjb9Tlyhj
-    twitter_secret: sunqh8Wm62gLgW8uvkk65Gx616AOPupDrSv8Gyccj8eHH
+    twitter_token_secret: sunqh8Wm62gLgW8uvkk65Gx616AOPupDrSv8Gyccj8eHH
+    twitter_consumer_key: WjdCnrFSf9Odp23p6AJNLgeuI
+    twitter_consumer_secret: jLti0fnxELG9Ik6lHYHuUVDSsn7UvoQoOedQtObEJDEHMoatBg

@@ -14,6 +14,9 @@ class AdminController extends Controller
      */
     public function dashBoardAction()
     {
+        $twitterService = $this->get('twitter.service');
+        $twitterService->retrieveFollowers();
+        
         return array('var'=>12345);
     }
 }
