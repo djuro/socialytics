@@ -1,6 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends 'SocialyticsBundle:Default:index.html.twig' %}
 
 {% block body %}
-
-{{ var }}
+    
+  {% block navigation %}
+    {% include 'SocialyticsBundle:Admin:navigation.html.twig'%}
+  {% endblock navigation %}
+  
 {% endblock body %}
+  

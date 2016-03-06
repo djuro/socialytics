@@ -15,12 +15,18 @@ class AdminController extends Controller
      */
     public function dashBoardAction()
     {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        var_dump($user->getUsername());
+        $token = $this->get('security.token_storage')->getToken();//->getUser();
+        var_dump($token->getResourceOwnerName());
+        //var_dump($user->getUsername());
         
-        $twitterService = $this->get('twitter.service');
-        $twitterService->retrieveFollowers();
+        //$twitterService = $this->get('twitter.service');
+        //$twitterService->retrieveFollowers();
         
         return array('var'=>12345);
+    }
+    
+    public function newReport()
+    {
+        
     }
 }
