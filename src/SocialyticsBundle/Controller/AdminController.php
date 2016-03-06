@@ -16,7 +16,7 @@ class AdminController extends Controller
     public function dashBoardAction()
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        var_dump($user);
+        var_dump($user->getUsername());
         
         $twitterService = $this->get('twitter.service');
         $twitterService->retrieveFollowers();
