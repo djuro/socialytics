@@ -54,7 +54,7 @@ class TwitterService
 );
         
         $url = 'https://api.twitter.com/1.1/followers/ids.json';
-        $getfield = '?screen_name=dmandini';
+        $getfield = '?screen_name=EatDalmatia';
         $requestMethod = 'GET';
 
         $twitter = new TwitterAPIExchange($settings);
