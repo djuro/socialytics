@@ -131,12 +131,13 @@
 
     </div>
     <!-- /.container -->
-
+   {% block javascripts %}
     <!-- jQuery Version 1.11.1 -->
     <script src="{{ asset('bundles/socialytics/js/jquery.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('bundles/socialytics/js/bootstrap.min.js') }}"></script>
+    {% endblock javascripts %}
 {% endblock body %}
 </body>
 

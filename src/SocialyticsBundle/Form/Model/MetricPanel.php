@@ -9,12 +9,12 @@
 namespace SocialyticsBundle\Form\Model;
 
 /**
- * Metric, underlying data class for a form that is used to define particular 
+ * MetricPanel, underlying data class for a form that is used to define particular 
  * result panel in report.
  *
  * @author djuro
  */
-class Metric
+class MetricPanel
 {
     /**
      *
@@ -51,4 +51,10 @@ class Metric
      * @var string
      */
     public $compareTo;
+    
+    /**
+     *
+     * @var string
+     */
+    public $format;
 }
