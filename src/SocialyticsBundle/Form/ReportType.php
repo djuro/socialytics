@@ -15,34 +15,12 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
  */
 class ReportType extends AbstractType
 {
-     /**
-     *
-     * @var string[]
-     */
-    private $metricNames;
-    
-    /**
-     *
-     * @var string[]
-     */
-    private $formatTypes;
-    
-    public function __construct($metricNames, $formatTypes)
-    {
-        $this->metricNames = $metricNames;
-        $this->formatTypes = $formatTypes;
-    }
     
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('title','text', array('label' => 'Report title'))
-            ->add('panels',CollectionType::class, 
-                    array('entry_type'=>new MetricPanelType($this->metricNames, $this->formatTypes),
-                            'label' => 'Metric',
-                            'allow_add'=> true,))
             
-            ->add('save', SubmitType::class)
         ;
     }
     

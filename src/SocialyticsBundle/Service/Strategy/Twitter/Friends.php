@@ -3,11 +3,11 @@
 namespace SocialyticsBundle\Service\Strategy\Twitter;
 
 /**
- * Concrete implementation of Metric class for Twitter followers.
+ * Concrete implementation of Metric class for Twitter following.
  *
  * @author djuro
  */
-class Followers extends AbstractMetric
+class Friends
 {
     public function __construct()
     {

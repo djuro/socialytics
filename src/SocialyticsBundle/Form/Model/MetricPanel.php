@@ -30,25 +30,25 @@ class MetricPanel
     
     /**
      *
-     * @var string
+     * @var DateTime
      */
     public $dateFrom;
     
     /**
      *
-     * @var string
+     * @var DateTime
      */
     public $dateTo;
     
     /**
      *
-     * @var string
+     * @var DateTime
      */
     public $compareFrom;
     
     /**
      *
-     * @var string
+     * @var DateTime
      */
     public $compareTo;
     

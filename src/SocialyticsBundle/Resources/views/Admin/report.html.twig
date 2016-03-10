@@ -1,0 +1,100 @@
+{% extends 'SocialyticsBundle:Default:index.html.twig' %}
+
+{% block body %}
+    
+  {% block navigation %}
+    {% include 'SocialyticsBundle:Admin:navigation.html.twig'%}
+  {% endblock navigation %}
+   
+  <div class="container">
+  <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Report: {{ report.title }}
+                </h1>
+            </div>
+            
+            {% for panel in report.panels %}
+            <div class="col-md-3">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h4>
+                          <span class="glyphicon glyphicon-scale"> </span>
+                          {{ panel.metric.name }}
+                      </h4>
+                  </div>
+                  <div class="panel-body">
+                      <p>
+                          
+                      </p>
+                     
+                  </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="col-md-3">
+              <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#metricModal">Add metric</button>
+            </div>
+      </div>
+ </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="metricModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-scale"></span> Add metric</h4>
+        </div>
+        <div class="modal-body">
+          <form novalidate method="post" action="{{path('admin_report',{'id':report.id})}}">
+            <div class="form-group">
+              <label for="{{ form.name.vars.id }}">{{form_label(form.name)}}</label>
+              {{ form_widget(form.name,{'attr':{'class':'form-control','placeholder':'Enter panel name, eg. Followers in February'}}) }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.metric.vars.id }}">{{form_label(form.metric)}}</label>
+              {{ form_widget(form.metric,{'attr':{'class':'form-control'}}) }}
+              
+            </div>
+              <div class="form-group">
+              <label for="{{ form.format.vars.id }}">{{form_label(form.format)}}</label>
+              {{ form_widget(form.format,{'attr':{'class':'form-control'}}) }}
+              
+            </div>
+            <div class="form-group">
+              <label for="{{ form.dateFrom.vars.id }}">{{form_label(form.dateFrom)}}</label>
+              {{ form_widget(form.dateFrom) }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.dateTo.vars.id }}">{{form_label(form.dateTo)}}</label>
+              {{ form_widget(form.dateTo) }}
+            </div>
+            <button type="submit" class="btn btn-default btn-block" id="saveMetric">Save</button>
+            {{ form_widget(form._token) }}
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {% block javascripts %}
+      {{ parent() }}
+      <script type="text/javascript">
+        jQuery(document).ready(function() {
+
+            $("#metricModal").modal({show: false});
+            
+            //$("#saveMetric").click(function(){
+              //  alert(123);
+            //});
+        });
+      </script>
+  {% endblock javascripts %}
+{% endblock body %}
+  
