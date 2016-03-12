@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialyticsBundle\Service\Strategy\Twitter;
+namespace SocialyticsBundle\Service\Strategy;
 
 /**
  * Enumerator class, documents Twitter metric format types
@@ -22,5 +22,10 @@ class MetricFormatTypes
     public static function names()
     {
         return self::$names;
+    }
+    
+    public function name($key)
+    {
+        return self::$names[$key];
     }
 }

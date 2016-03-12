@@ -2,6 +2,8 @@
 
 namespace SocialyticsBundle\Service\Strategy\Repository;
 
+use \stdClass;
+
 /**
  * Defines behaviors of Repository class implementations.
  * 
@@ -9,6 +11,8 @@ namespace SocialyticsBundle\Service\Strategy\Repository;
  */
 interface ProviderRepository
 {
+    public function setProviderParameters(stdClass $parameters);
+    
     public function store();
     
     public function find();

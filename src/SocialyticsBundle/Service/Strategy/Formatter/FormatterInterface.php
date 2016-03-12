@@ -9,7 +9,5 @@ namespace SocialyticsBundle\Service\Strategy\Formatter;
  */
 interface FormatterInterface
 {
-    public function formatNumericResult();
-    
-    public function formatGraphicResult();
+    public function formatResult();
 }

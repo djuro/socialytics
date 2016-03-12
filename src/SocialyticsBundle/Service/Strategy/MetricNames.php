@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialyticsBundle\Service\Strategy\Twitter;
+namespace SocialyticsBundle\Service\Strategy;
 
 /**
  * Enumerator class, documents Twitter metric names
@@ -9,17 +9,17 @@ namespace SocialyticsBundle\Service\Strategy\Twitter;
  */
 class MetricNames
 {
-    const FOLLOWERS = 'Twitter followers';
+    const TWITTER_FOLLOWERS = 'Twitter followers';
     
-    const FRIENDS = 'Twitter friends';
+    const TWITTER_FRIENDS = 'Twitter following';
     
     const TWEETS = 'Tweets';
     
     const RETWEETS = 'Retweets';
     
     private static $names = [
-                        'FOLLOWERS' => self::FOLLOWERS,
-                        'FRIENDS' => self::FRIENDS,
+                        'TWITTER_FOLLOWERS' => self::TWITTER_FOLLOWERS,
+                        'TWITTER_FRIENDS' => self::TWITTER_FRIENDS,
                         'TWEETS' => self::TWEETS,
                         'RETWEETS' => self::RETWEETS
     ];

@@ -1,8 +1,8 @@
 <?php
 namespace SocialyticsBundle\Controller;
 
-use SocialyticsBundle\Service\Strategy\Twitter\MetricNames;
-use SocialyticsBundle\Service\Strategy\Twitter\MetricFormatTypes;
+use SocialyticsBundle\Service\Strategy\MetricNames;
+use SocialyticsBundle\Service\Strategy\MetricFormatTypes;
 
 use SocialyticsBundle\Form\ReportType;
 use SocialyticsBundle\Entity\Report;
@@ -55,15 +55,17 @@ class AdminController extends Controller
         {
             $metricFactory = $this->get('metric_factory');
             
-            ddd($metricFactory);
-            $metricFactory->create($form->getData());
+            //ddd($form->getData());
+            $domainMetric = $metricFactory->create($form->getData());
+            
+            ddd($domainMetric);
             //ddd($form->getData());
             //$reportService = $this->get('report.service');
             //$reportService->addMetric($report, $form->getData());
             
             $em = $this->getDoctrine()->getManager();
             $em->flush();
-            ddd($report);
+            
             return $this->redirect($this->generateUrl('admin_report',array('id'=>$id)));
         }
         

@@ -14,11 +14,6 @@ abstract class AbstractMetric
     
     private $formatter;
     
-    public function __construct(ProviderRepository $providerRepository, Formatter $formatter)
-    {
-        $this->providerRepository = $providerRepository;
-        $this->formatter = $formatter;
-    }
     
     function getProviderRepository() {
         return $this->providerRepository;
@@ -27,6 +22,16 @@ abstract class AbstractMetric
     function getFormatter() {
         return $this->formatter;
     }
+    
+    function setProviderRepository($providerRepository) {
+        $this->providerRepository = $providerRepository;
+    }
+
+    function setFormatter($formatter) {
+        $this->formatter = $formatter;
+    }
+
+
 
 
 }
