@@ -2,7 +2,7 @@
 
 namespace SocialyticsBundle\Service;
 use SocialyticsBundle\Entity\Report;
-use SocialyticsBundle\Form\Model\MetricPanel;
+use SocialyticsBundle\Form\Model\MetricPanel as FormMetricPanel;
 use SocialyticsBundle\Service\Strategy\Twitter\MetricNames;
 
 class MetricFactory
@@ -42,12 +42,12 @@ class MetricFactory
         $this->twitterTokenSecret = $twitterTokenSecret;
     }
     
-    public function create(MetricPanel $metricPanel)
+    public function create(FormMetricPanel $metricPanel)
     {
       switch($metricPanel->metric)
       {
           case MetricNames::FOLLOWERS:
-              $metric = new Followers();
+              $metric = new TwitterMetric($metricPanel->metric);
           
           case MetricNames::FRIENDS:
               $metric = new Friends();
