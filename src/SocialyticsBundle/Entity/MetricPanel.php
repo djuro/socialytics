@@ -25,6 +25,13 @@ class MetricPanel
     private $id;
     
     /**
+     * 
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $title;
+    
+    /**
      * @var Metric
      * @ORM\OneToOne(targetEntity="Metric",cascade={"persist"})
      * @ORM\JoinColumn(name="metric_id", referencedColumnName="id")
@@ -79,9 +86,17 @@ class MetricPanel
 
    function setReport(Report $report)
    {
-       $report->addPanel($this);
        $this->report = $report;
    }
+
+   function getTitle() {
+       return $this->title;
+   }
+
+   function setTitle($title) {
+       $this->title = $title;
+   }
+
 
 
 }

@@ -81,6 +81,7 @@ class Report
 
     public function addPanel(MetricPanel $panel)
     {
+        $panel->setReport($this);
         $this->panels->add($panel);
     }
     

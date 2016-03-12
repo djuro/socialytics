@@ -8,6 +8,7 @@ services:
         
     metric_factory:
         class: SocialyticsBundle\Service\MetricFactory
+        arguments: ["@doctrine"]
         calls:
             - [setTwitterParameters, [%twitter_access_token%, %twitter_token_secret%, %twitter_consumer_key%, %twitter_consumer_secret%]]
         

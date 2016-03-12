@@ -4,15 +4,25 @@ namespace SocialyticsBundle\Service;
 use SocialyticsBundle\Entity\Report;
 use SocialyticsBundle\Form\Model\MetricPanel as FormMetricPanel;
 use SocialyticsBundle\Service\Strategy\MetricNames;
-use SocialyticsBundle\Service\Strategy\TwitterMetric;
+use SocialyticsBundle\Service\Strategy\TwitterFollowers;
+use SocialyticsBundle\Service\Strategy\TwitterFollowing;
+use SocialyticsBundle\Service\Strategy\Tweets;
 use SocialyticsBundle\Service\Strategy\Formatter\FormatNumericResult;
 use SocialyticsBundle\Service\Strategy\Formatter\FormatGraphicResult;
 use SocialyticsBundle\Service\Strategy\Repository\TwitterRepository;
+
+use Doctrine\Bundle\DoctrineBundle\Registry;
 
 use \stdClass;
 
 class MetricFactory
 {
+    /**
+     *
+     * @var Registry
+     */
+    private $doctrine;
+    
     /**
      *
      * @var string
@@ -37,7 +47,10 @@ class MetricFactory
      */
     private $twitterConsumerSecret;
     
-   
+    public function __construct(Registry $doctrine)
+    {
+        $this->doctrine = $doctrine;
+    }
     
     public function setTwitterParameters($twitterAccessToken,$twitterTokenSecret,
             $twitterConsumerKey,$twitterConsumerSecret)
@@ -48,7 +61,7 @@ class MetricFactory
         $this->twitterTokenSecret = $twitterTokenSecret;
     }
     
-    public function create(FormMetricPanel $metricPanel)
+    public function create(FormMetricPanel $metricPanel, $username)
     {
         $metricName = $metricPanel->metric;
         $formatter = $this->getFormatter($metricPanel->format);
@@ -56,19 +69,18 @@ class MetricFactory
         switch($metricName)
         {
             case 'TWITTER_FOLLOWERS':
-                $twitterRepository = new TwitterRepository;
+                $twitterRepository = new TwitterRepository($this->doctrine, $metricName);
                 $twitterRepository->setProviderParameters($this->getTwitterParameters());
-                $metric = new TwitterMetric($metricName);
+                $metric = new TwitterFollowers($metricName, $metricPanel->dateFrom, $metricPanel->dateFrom, $username);
                 $metric->setProviderRepository($twitterRepository);
                 break;
             case 'TWITTER_FRIENDS':
-                $metric = new TwitterMetric($metricName);
-                $metric->setProviderRepository(new TwitterRepository);
+                $twitterRepository = new TwitterRepository($this->doctrine, $metricName);
+                $twitterRepository->setProviderParameters($this->getTwitterParameters());
+                $metric = new TwitterFollowing($metricName, $metricPanel->dateFrom, $metricPanel->dateFrom, $username);
+                $metric->setProviderRepository($twitterRepository);
                 break;
-            case 'TWEETS':
-                $metric = new TwitterMetric($metricName);
-                $metric->setProviderRepository(new TwitterRepository);
-                break;
+            
             case 'RETWEETS':
                 $metric = new TwitterMetric($metricName);
                 $metric->setProviderRepository(new TwitterRepository);

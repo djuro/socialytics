@@ -20,7 +20,7 @@ class MetricPanel
      *
      * @var string
      */
-    public $name;
+    public $title;
     
     /**
      *

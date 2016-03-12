@@ -2,6 +2,8 @@
 
 namespace SocialyticsBundle\Service\Strategy;
 
+use \stdClass;
+
 /**
  * Defines behaviors of formatting a metric result in a particular way.
  * 
@@ -9,5 +11,5 @@ namespace SocialyticsBundle\Service\Strategy;
  */
 interface Formatter
 {
-    public function formatResult();
+    public function formatResult(stdClass $retrievedData);
 }

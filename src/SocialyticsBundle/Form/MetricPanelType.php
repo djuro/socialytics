@@ -34,7 +34,7 @@ class MetricPanelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name','text', array('label' => 'Panel name'))
+            ->add('title','text', array('label' => 'Panel title'))
             ->add('metric','choice', array('label' => 'Metric', 
                                    'choices' => $this->metricNames, 
                                    'multiple' => false,

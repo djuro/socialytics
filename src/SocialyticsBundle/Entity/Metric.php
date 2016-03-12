@@ -45,27 +45,19 @@ class Metric
      * @ORM\Column(type="date", name="date_to")
      */
     private $dateTo;
-    
+     
     /**
      *
-     * @var string
-     * @ORM\Column(type="string")
+     * @var 
+     * @ORM\Column(type="text")
      */
-    private $format;
-    
+    private $result;
     
     
     public function __construct()
     {
         $this->id = uniqid();
     }
-    
-    /**
-     *
-     * @var GraphResult[]
-     * @ORM\Column(type="array")
-     */
-    private $graphicResult;
     
     function getId() {
         return $this->id;
@@ -101,6 +93,14 @@ class Metric
 
     function setFormat($format) {
         $this->format = $format;
+    }
+
+    function getResult() {
+        return $this->result;
+    }
+
+    function setResult($result) {
+        $this->result = $result;
     }
 
 

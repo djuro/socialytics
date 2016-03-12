@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function dashBoardAction()
     {
         $token = $this->getToken();
-       // $user = $token->getUser();
+        //$user = $token->getUser();
         //$resourceOwnerName = $token->getResourceOwnerName();
         //var_dump($user->getUsername());
         
@@ -49,19 +49,18 @@ class AdminController extends Controller
         $report = $this->getDoctrine()->getManager()->getRepository('SocialyticsBundle:Report')->find($id);
         $form = $this->createForm(new MetricPanelType(MetricNames::names(),  MetricFormatTypes::names()), $metricPanel);
         
-        //ddd($report->getPanels());
         $form->handleRequest($request);
         if($form->isValid())
         {
             $metricFactory = $this->get('metric_factory');
+            $username = "dmandini";
             
-            //ddd($form->getData());
-            $domainMetric = $metricFactory->create($form->getData());
+            $metric = $metricFactory->create($form->getData(), $username);
             
-            ddd($domainMetric);
-            //ddd($form->getData());
-            //$reportService = $this->get('report.service');
-            //$reportService->addMetric($report, $form->getData());
+            $result = $metric->calculate();
+            
+            $reportService = $this->get('report.service');
+            $reportService->addMetric($report, $form->getData(), $result);
             
             $em = $this->getDoctrine()->getManager();
             $em->flush();
@@ -92,10 +91,7 @@ class AdminController extends Controller
         return $this->redirect($this->generateUrl('admin_report',array('id'=>$report->getId())));
     }
     
-    public function storeMetric(Request $request)
-    {
-        
-    }
+   
     
     private function getUsername($token)
     {

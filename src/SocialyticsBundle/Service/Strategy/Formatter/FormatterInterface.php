@@ -2,6 +2,8 @@
 
 namespace SocialyticsBundle\Service\Strategy\Formatter;
 
+use \stdClass;
+
 /**
  * Defines behaviors of concrete Formatter class implementations.
  * 
@@ -9,5 +11,5 @@ namespace SocialyticsBundle\Service\Strategy\Formatter;
  */
 interface FormatterInterface
 {
-    public function formatResult();
+    public function formatResult(stdClass $retrievedData);
 }
