@@ -53,8 +53,9 @@ class AdminController extends Controller
         $form->handleRequest($request);
         if($form->isValid())
         {
-            $metricFactory = $this->get('twitter_metric_factory.service');
+            $metricFactory = $this->get('metric_factory');
             
+            ddd($metricFactory);
             $metricFactory->create($form->getData());
             //ddd($form->getData());
             //$reportService = $this->get('report.service');

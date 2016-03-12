@@ -5,38 +5,41 @@ use SocialyticsBundle\Entity\Report;
 use SocialyticsBundle\Form\Model\MetricPanel;
 use SocialyticsBundle\Service\Strategy\Twitter\MetricNames;
 
-class TwitterMetricFactory
+class MetricFactory
 {
     /**
      *
      * @var string
      */
-    private $accessToken;
+    private $twitterAccessToken;
     
     /**
      *
      * @var string
      */
-    private $tokenSecret;
+    private $twitterTokenSecret;
     
     /**
      *
      * @var string
      */
-    private $consumerKey;
+    private $twitterConsumerKey;
     
     /**
      *
      * @var string
      */
-    private $consumerSecret;
+    private $twitterConsumerSecret;
     
-    public function __construct($accessToken, $tokenSecret, $consumerKey, $consumerSecret)
+   
+    
+    public function setTwitterParameters($twitterAccessToken,$twitterTokenSecret,
+            $twitterConsumerKey,$twitterConsumerSecret)
     {
-        $this->accessToken = $accessToken;
-        $this->tokenSecret = $tokenSecret;
-        $this->consumerKey = $consumerKey;
-        $this->consumerSecret = $consumerSecret;
+        $this->twitterAccessToken = $twitterAccessToken;
+        $this->twitterConsumerKey = $twitterConsumerKey;
+        $this->twitterConsumerSecret = $twitterConsumerSecret;
+        $this->twitterTokenSecret = $twitterTokenSecret;
     }
     
     public function create(MetricPanel $metricPanel)

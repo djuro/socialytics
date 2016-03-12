@@ -6,9 +6,10 @@ services:
         class: SocialyticsBundle\Service\TwitterService
         arguments: [%twitter_access_token%, %twitter_token_secret%, %twitter_consumer_key%, %twitter_consumer_secret%]
         
-    twitter_metric_factory.service:
+    metric_factory:
         class: SocialyticsBundle\Service\MetricFactory
-        arguments: [%twitter_access_token%, %twitter_token_secret%, %twitter_consumer_key%, %twitter_consumer_secret%]
+        calls:
+            - [setTwitterParameters, [%twitter_access_token%, %twitter_token_secret%, %twitter_consumer_key%, %twitter_consumer_secret%]]
         
     report.service:
         class: SocialyticsBundle\Service\ReportService
