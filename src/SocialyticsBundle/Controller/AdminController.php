@@ -48,8 +48,9 @@ class AdminController extends Controller
         $form->handleRequest($request);
         if($form->isValid())
         {
+            $token = $this->getToken();
+            $username = $this->getUsername($token);
             $metricFactory = $this->get('metric_factory');
-            $username = "dmandini";
             
             $metric = $metricFactory->create($form->getData(), $username);
             
@@ -74,8 +75,8 @@ class AdminController extends Controller
      */
     public function storeReportAction(Request $request)
     {
-        $report = $request->request->get('report');
-        $title = $report['title'];
+        $formReport = $request->request->get('report');
+        $title = $formReport['title'];
         $token = $this->getToken();
         $report = new Report();
         $report->setTitle($title);
