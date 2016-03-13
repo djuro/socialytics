@@ -10,13 +10,16 @@ security:
             anonymous: ~
             oauth:
                 resource_owners:
-                    twitter:           "/login/check-twitter"
+                    twitter:       "/login/check-twitter"
                 login_path:        /login
                 use_forward:       false
                 failure_path:      /login
 
                 oauth_user_provider:
                     service: hwi_oauth.user.provider.entity
+            logout:
+                path:   /logout
+                target: /
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

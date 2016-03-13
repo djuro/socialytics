@@ -21,7 +21,15 @@
                         <a href="{{ path('admin_reports') }}">Reports</a>
                     </li>
                     <li>
-                        <a href="{{ path('hwi_oauth_connect') }}">Log in</a>
+                        {% if app.user %}
+                            <a href="{{ path('logout') }}">
+                            Log out
+                        </a>
+                        {% else %}
+                            <a href="{{ path('hwi_oauth_connect') }}">
+                            Log in
+                            </a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
