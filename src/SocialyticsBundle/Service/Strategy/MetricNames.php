@@ -13,15 +13,15 @@ class MetricNames
     
     const TWITTER_FRIENDS = 'Twitter following';
     
-    const TWEETS = 'Tweets';
+    //const TWEETS = 'Tweets';
     
-    const RETWEETS = 'Retweets';
+    //const RETWEETS = 'Retweets';
     
     private static $names = [
                         'TWITTER_FOLLOWERS' => self::TWITTER_FOLLOWERS,
                         'TWITTER_FRIENDS' => self::TWITTER_FRIENDS,
-                        'TWEETS' => self::TWEETS,
-                        'RETWEETS' => self::RETWEETS
+                        //'TWEETS' => self::TWEETS,
+                        //'RETWEETS' => self::RETWEETS
     ];
     
     public static function names()

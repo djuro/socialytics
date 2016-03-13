@@ -1,0 +1,29 @@
+{% extends 'SocialyticsBundle:Default:index.html.twig' %}
+
+{% block body %}
+    
+  {% block navigation %}
+    {% include 'SocialyticsBundle:Admin:navigation.html.twig'%}
+  {% endblock navigation %}
+   
+  <div class="container">
+    <h1 class="page-header">
+       Reports
+    </h1>
+      <table class="table table-striped">
+      {% for report in reports %}
+          <tr><td>
+                  {{ report.title }}
+              </td>
+              <td>
+                  <a href="{{ path('admin_report',{'id':report.id}) }}" class="btn btn-default">
+                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                  </a>
+              </td></tr>
+      {% endfor %}
+      </table>
+ </div>
+  
+{% endblock body %}
+  

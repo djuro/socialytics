@@ -1,0 +1,23 @@
+{% extends 'SocialyticsBundle:Default:index.html.twig' %}
+
+{% block body %}
+    {% block navigation %} {{ parent() }} {% endblock navigation %}
+    
+    {% if error is defined and error %}
+        <span>{{ error }}</span>
+    {% endif %}
+    <div class="container">
+        <div class="page-header">
+        <h2>Access your account</h2>
+    </div>
+        <div class="row">
+            {% for owner in hwi_oauth_resource_owners() %}
+               <div class="col-sm-12"> 
+                   <p><a href="{{ hwi_oauth_login_url(owner) }}" class="btn btn-default">Connect to {{ owner | trans({}, 'HWIOAuthBundle')|capitalize }}</a> </p></div>
+            {% endfor %}
+               <div class="col-sm-12"><p><a href="#" class="btn btn-default disabled" class="btn btn-default">Connect to Facebook</a></p></div>
+               <div class="col-sm-12"><p><a href="#" class="btn btn-default disabled" class="btn btn-default">Connect to Linkedin</a></p></div>
+               <div class="col-sm-12"><p>...</p></div>
+        </div>
+    </div>
+{% endblock body %}

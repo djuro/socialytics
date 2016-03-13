@@ -12,7 +12,6 @@ use SocialyticsBundle\Form\MetricPanelType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class AdminController extends Controller
@@ -26,10 +25,7 @@ class AdminController extends Controller
         $token = $this->getToken();
         $user = $token->getUser();
         $resourceOwnerName = $token->getResourceOwnerName();
-        //var_dump($user->getUsername());
-        
-        //$twitterService = $this->get('twitter.service');
-        //$twitterService->retrieveFollowers();
+       
         $form = $this->createForm(new ReportType());
         
         return array(
@@ -83,7 +79,7 @@ class AdminController extends Controller
         $token = $this->getToken();
         $report = new Report();
         $report->setTitle($title);
-        $report->setUsername('dmandini');//$this->getUsername($token));
+        $report->setUsername($this->getUsername($token));
         $em = $this->getDoctrine()->getManager();
         $em->persist($report);
         $em->flush();
@@ -91,7 +87,22 @@ class AdminController extends Controller
         return $this->redirect($this->generateUrl('admin_report',array('id'=>$report->getId())));
     }
     
-   
+   /**
+     * @Route("/admin/reports", name="admin_reports")
+     * @Template()
+     */
+    public function reportsAction()
+    {
+        $token = $this->getToken();
+        $username = $this->getUsername($token);
+        $reportRepository = $this->getDoctrine()->getManager()->getRepository('SocialyticsBundle:Report');
+        
+        $reportsResult = $reportRepository->findBy(array('username'=>$username));
+        
+        return array( 'reports' => $reportsResult );
+        
+    }
+    
     
     private function getUsername($token)
     {
