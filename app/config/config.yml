@@ -75,10 +75,6 @@ hwi_oauth:
             client_secret:       jLti0fnxELG9Ik6lHYHuUVDSsn7UvoQoOedQtObEJDEHMoatBg
             #options:
              #   include_email: true
-        facebook:
-            type:                facebook
-            client_id:           534836393365050
-            client_secret:       9149e412c7dcb9c0c8494371c8126b68
                 
 services:
     hwi_oauth.user.provider.entity:
