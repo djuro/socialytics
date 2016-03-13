@@ -24,8 +24,8 @@ class AdminController extends Controller
     public function dashBoardAction()
     {
         $token = $this->getToken();
-        //$user = $token->getUser();
-        //$resourceOwnerName = $token->getResourceOwnerName();
+        $user = $token->getUser();
+        $resourceOwnerName = $token->getResourceOwnerName();
         //var_dump($user->getUsername());
         
         //$twitterService = $this->get('twitter.service');
@@ -34,8 +34,8 @@ class AdminController extends Controller
         
         return array(
             'form' => $form->createView(),
-            'resourceOwnerName' => 'Twitter',//ucfirst($resourceOwnerName), 
-            'username' => 'dmandini'//$user->getUsername()
+            'resourceOwnerName' => ucfirst($resourceOwnerName), 
+            'username' => $user->getUsername()
                 );
     }
     
